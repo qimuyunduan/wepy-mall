@@ -31,15 +31,15 @@ import {
   SEL_CLASS_CODE
 } from '@/utils/constant';
 
-import tip from '@/utils/tip'
+import tip from '@/utils/tip';
 
 export default class Classify extends wepy.page {
   config = {
     navigationBarTitleText: '分类',
-  }
+  };
   components = {
 
-  }
+  };
 
   data = {
     scrollTop: 100,
@@ -49,7 +49,7 @@ export default class Classify extends wepy.page {
     rootcateList: {},
     //二级三级分类数据
     childcateList: {}
-  }
+  };
 
   async getChildCate(rootCateCode) {
     const json = await api.childGoodsCatetoryList({
@@ -107,7 +107,7 @@ export default class Classify extends wepy.page {
 
   computed = {
 
-  }
+  };
   methods = {
     changeCate(e) {
       let code = e.currentTarget.dataset.code;
@@ -125,7 +125,7 @@ export default class Classify extends wepy.page {
     onShareAppMessage: function (res) {
       if (res.from === 'button') {
         // 来自页面内转发按钮
-        console.log(res.target)
+        console.log(res.target);
       }
       return {
         title: this.detail.name,
@@ -136,9 +136,9 @@ export default class Classify extends wepy.page {
         fail: function(res) {
           // 转发失败
         }
-      }
+      };
     }
-  }
+  };
   events = {
 
   }

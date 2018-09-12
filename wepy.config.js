@@ -45,10 +45,9 @@ module.exports = {
   appConfig: {
     noPromiseAPI: ['createSelectorQuery']
   }
-}
+};
 
 if (prod) {
-
   // 压缩sass
   // module.exports.compilers['sass'] = {outputStyle: 'compressed'}
 
@@ -70,5 +69,5 @@ if (prod) {
         }
       }
     }
-  }
+  };
 }

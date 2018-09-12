@@ -21,10 +21,10 @@ var realWindowWidth = 0;
 var realWindowHeight = 0;
 wx.getSystemInfo({
   success: function (res) {
-    realWindowWidth = res.windowWidth
-    realWindowHeight = res.windowHeight
+    realWindowWidth = res.windowWidth;
+    realWindowHeight = res.windowHeight;
   }
-})
+});
 /**
  * 主函数入口区
  **/
@@ -43,12 +43,12 @@ function wxParse(bindName = 'wxParseData', type='html', data='<div class="color:
   transData.view = {};
   transData.view.imagePadding = 0;
   if(typeof(imagePadding) != 'undefined'){
-    transData.view.imagePadding = imagePadding
+    transData.view.imagePadding = imagePadding;
   }
   var bindData = {};
   bindData[bindName] = transData;
-  that.setData(bindData)
-  that.bindData = bindData // 增加这一行代码
+  that.setData(bindData);
+  that.bindData = bindData; // 增加这一行代码
   that.wxParseImgLoad = wxParseImgLoad;
   that.wxParseImgTap = wxParseImgTap;
 }
@@ -61,7 +61,7 @@ function wxParseImgTap(e) {
     wx.previewImage({
       current: nowImgUrl, // 当前显示图片的http链接
       urls: that.data[tagFrom].imageUrls // 需要预览的图片http链接列表
-    })
+    });
   }
 }
 
@@ -73,7 +73,7 @@ function wxParseImgLoad(e) {
   var tagFrom = e.target.dataset.from;
   var idx = e.target.dataset.idx;
   if (typeof (tagFrom) != 'undefined' && tagFrom.length > 0) {
-    calMoreImageInfo(e, idx, that, tagFrom)
+    calMoreImageInfo(e, idx, that, tagFrom);
   }
 }
 // 假循环获取计算图片视觉最佳宽高
@@ -91,15 +91,15 @@ function calMoreImageInfo(e, idx, that, bindName) {
   // var bindData = {};
   // bindData[bindName] = temData;
   // that.setData(bindData);
-  var index = temImages[idx].index
-  var key = `${bindName}`
-  for (var i of index.split('.')) key+=`.nodes[${i}]`
-  var keyW = key + '.width'
-  var keyH = key + '.height'
+  var index = temImages[idx].index;
+  var key = `${bindName}`;
+  for (var i of index.split('.')) key+=`.nodes[${i}]`;
+  var keyW = key + '.width';
+  var keyH = key + '.height';
   that.setData({
     [keyW]: recal.imageWidth,
     [keyH]: recal.imageheight,
-  })
+  });
 }
 
 // 计算视觉优先的图片宽高
@@ -147,14 +147,14 @@ function wxParseTemArray(temArrayName,bindNameReg,total,that){
  *
  */
 
-function emojisInit(reg='',baseSrc="/wxParse/emojis/",emojis){
-   HtmlToJson.emojisInit(reg,baseSrc,emojis);
+function emojisInit(reg='',baseSrc='/wxParse/emojis/',emojis){
+  HtmlToJson.emojisInit(reg,baseSrc,emojis);
 }
 
 module.exports = {
   wxParse: wxParse,
   wxParseTemArray:wxParseTemArray,
   emojisInit:emojisInit
-}
+};
 
 

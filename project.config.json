@@ -1,0 +1,13 @@
+{
+  "description": "mini mail",
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "postcss": false,
+    "minified": false
+  },
+  "compileType": "miniprogram",
+  "appid": "wx5f8c21255995634b",
+  "projectname": "vipfamily mail",
+  "miniprogramRoot": "./dist"
+}

@@ -1,37 +1,39 @@
 <!--地址管理-->
 <template>
-  <view class="{{currentPage==0?'':'hidden'}}">
-    <addressList :list.sync="addressList" @currentPage.user="getCurrentPage"></addressList>
+  <view class="{{currentPage==0? '':'hidden'}}">
+    <addressList :list.sync='addressList' @currentPage.user='getCurrentPage'></addressList>
   </view>
   <view class="{{currentPage==1?'':'hidden'}}">
-    <addressAdd @currentPage.user="getCurrentPage"></addressAdd>
+    <addressAdd @currentPage.user='getCurrentPage'></addressAdd>
   </view>
   <view class="{{currentPage==2?'':'hidden'}}">
-    <addressEdit @currentPage.user="getCurrentPage" ></addressEdit>
+    <addressEdit @currentPage.user='getCurrentPage' ></addressEdit>
   </view>
 </template>
+
 <script>
 import wepy from 'wepy';
-import AddressList from "../components/address_list";
-import AddressAdd from "../components/address_add";
-import AddressEdit from "../components/address_edit";
-import api from "../api/api";
+import AddressList from '../components/address_list';
+import AddressAdd from '../components/address_add';
+import AddressEdit from '../components/address_edit';
+import api from '../api/api';
 import tip from '@/utils/tip';
 import {
   USER_SPECICAL_INFO
 } from '@/utils/constant';
+
 export default class Address extends wepy.page {
   config = {
     navigationBarTitleText: '地址管理',
-  }
+  };
   data = {
     addressList: [],
     receiverInfo:{},
 
     //显示当前组件 0 列表 1新增 2编辑
     currentPage: 0,
-    type: "" //哪个页面跳转过来的
-  }
+    type: '' //哪个页面跳转过来的
+  };
 
   async getUserAddress(phone,code) {
     let that = this;
@@ -45,9 +47,9 @@ export default class Address extends wepy.page {
 
     if (json.data.code == 0) {
       this.addressList=json.data.list;
-      this.$invoke("addressList","refreshList", this.addressList);
+      this.$invoke('addressList','refreshList', this.addressList);
     } else {
-      tip.error(json.data.msg)
+      tip.error(json.data.msg);
     }
     that.showLoading = false;
   }
@@ -62,10 +64,10 @@ export default class Address extends wepy.page {
     });
     if (json.data.code == 0) {
       this.receiverInfo=json.data.receiverInfo;
-      this.$invoke("addressEdit","refresh", this.receiverInfo);
-      console.log("=================================")
+      this.$invoke('addressEdit','refresh', this.receiverInfo);
+      console.log('=================================');
     } else {
-      tip.error(json.data.msg)
+      tip.error(json.data.msg);
     }
     that.showLoading = false;
   }
@@ -74,13 +76,13 @@ export default class Address extends wepy.page {
     addressList: AddressList,
     addressAdd: AddressAdd,
     addressEdit: AddressEdit
-  }
+  };
 
   onLoad(option) {
     this.currentPage = 0;
     this.getUserAddress();
-    this.type = (option.type==undefined?"":option.type);
-    this.$invoke("addressList","setOrgType", this.type);
+    this.type = (option.type==undefined?'':option.type);
+    this.$invoke('addressList','setOrgType', this.type);
   }
 
   onShow(){
@@ -89,7 +91,7 @@ export default class Address extends wepy.page {
   }
   computed = {
 
-  }
+  };
   methods = {
     getCurrentPage(cur,id) {
       this.currentPage = cur;
@@ -97,24 +99,26 @@ export default class Address extends wepy.page {
         this.receiverInf(id);
       }
     }
-  }
+  };
+
   onUnload() {
     // if (this.currentPage !== 0) {
     //   wx.navigateTo({
-    //     url: "/pages/address"
+    //     url: '/pages/address'
     //   })
     // }
   }
+
   events = {
-      refreshAddList(msg){
-          this.getUserAddress();
-      }
+    refreshAddList(msg) {
+      this.getUserAddress();
+    }
   }
 
 }
 
 </script>
-<style lang="less">
+<style lang='less'>
 .hidden {
   display: none;
 }

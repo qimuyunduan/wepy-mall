@@ -1,21 +1,24 @@
 <!--组件测试-->
 <template>
-  
+
 </template>
 
 <script>
   import wepy from 'wepy';
+
   export default class exchangeGoods extends wepy.page {
     config = {
       navigationBarTitleText: '组件测试',
-    }
+    };
     data = {
       list: [],
       aways: 0
-    }
+    };
+
     onLoad() {
       let arry = {
-        days: [{
+        days: [
+          {
             is_sign: true
           },
           {
@@ -38,12 +41,13 @@
           }
         ],
         aways: 3
-      }
+      };
       // this.list = arry;
       console.log(arry)
       this.list = arry.days;
       this.aways = arry.aways;
     }
+
     computed = {}
     methods = {}
     events = {}
@@ -53,57 +57,65 @@
 <style lang="less">
   .time_line_box {
     position: relative;
-    height: 150rpx;
+    height: 150 rpx;
     overflow: hidden;
-    margin: 10rpx;
+    margin: 10 rpx;
   }
+
   .time_line {
     position: absolute;
     z-index: 1;
     left: 0;
-    top: 70rpx;
-    height: 5rpx;
+    top: 70 rpx;
+    height: 5 rpx;
     background: #dfdfdf;
     transition: transform 0.4s;
   }
+
   .day-box {
     float: left;
     width: 14.28%;
   }
+
   .award-jf {
-    padding-top: 20rpx;
-    font-size: 26rpx;
+    padding-top: 20 rpx;
+    font-size: 26 rpx;
     color: #999;
   }
+
   .order_item {
     position: absolute;
     bottom: 0;
     z-index: 2;
     text-align: center;
-    font-size: 26rpx;
-    padding-bottom: 20rpx;
+    font-size: 26 rpx;
+    padding-bottom: 20 rpx;
     color: #666;
   }
+
   .order_item:after {
     content: '';
     position: absolute;
     left: 50%;
     right: auto;
     transform: translateX(-50%);
-    bottom: -5rpx;
-    height: 10rpx;
-    width: 10rpx;
+    bottom: -5 rpx;
+    height: 10 rpx;
+    width: 10 rpx;
     border-radius: 50%;
-    border: 2rpx solid #dfdfdf;
+    border: 2 rpx solid #dfdfdf;
     background-color: #f8f8f8;
   }
+
   .selected {
     color: #eb6623;
   }
+
   .selected:after {
     background-color: #eb6623;
     border-color: #eb6623;
   }
+
   .filling_line {
     position: absolute;
     z-index: 1;
