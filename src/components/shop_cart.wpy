@@ -95,7 +95,7 @@
           }
         }
       } else {
-        tip.error(json.data.msg)
+        // tip.error(json.data.msg)
       }
       that.$apply();
     }

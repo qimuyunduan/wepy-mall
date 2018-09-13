@@ -2,7 +2,7 @@ import {
   wxRequest
 } from '@/utils/wxRequest';
 
-const apiMall = 'https:// sujiefs.com/';
+const apiMall = 'https://sujiefs.com/';
 //  const apiMall = 'http:// localhost:8080/'
 
 /**
